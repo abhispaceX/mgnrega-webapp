@@ -67,11 +67,11 @@ export async function GET(
 
     // Calculate average wage rate from all months (average of averages)
     const wageRates = records
-      .map((r) => r.Average_Wage_rate_per_day_per_person || 0)
-      .filter((r) => r > 0);
+      .map((r: typeof records[0]) => r.Average_Wage_rate_per_day_per_person || 0)
+      .filter((r: number) => r > 0);
     const avgWage =
       wageRates.length > 0
-        ? wageRates.reduce((a, b) => a + b, 0) / wageRates.length
+        ? wageRates.reduce((a: number, b: number) => a + b, 0) / wageRates.length
         : 0;
 
     // Use latest month's cumulative values for summary
