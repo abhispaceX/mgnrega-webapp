@@ -26,17 +26,17 @@ export default function SummaryCard({
 
   return (
     <div
-      className={`rounded-xl border-2 p-6 shadow-md transition-all hover:shadow-lg ${colorClasses[color]}`}
+      className={`rounded-lg sm:rounded-xl border-2 p-4 sm:p-5 md:p-6 shadow-md transition-all hover:shadow-lg ${colorClasses[color]}`}
     >
       <div className="flex items-start justify-between">
-        <div className="flex-1">
-          <p className="text-sm font-medium opacity-80">{title}</p>
-          <p className="mt-2 text-3xl font-bold">{value}</p>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs sm:text-sm font-medium opacity-80">{title}</p>
+          <p className="mt-1 sm:mt-2 text-xl sm:text-2xl md:text-3xl font-bold break-words">{value}</p>
           {subtitle && (
-            <p className="mt-1 text-xs opacity-70">{subtitle}</p>
+            <p className="mt-1 text-[10px] xs:text-xs opacity-70">{subtitle}</p>
           )}
         </div>
-        {icon && <span className="text-4xl">{icon}</span>}
+        {icon && <span className="text-2xl sm:text-3xl md:text-4xl ml-2 flex-shrink-0">{icon}</span>}
       </div>
     </div>
   );

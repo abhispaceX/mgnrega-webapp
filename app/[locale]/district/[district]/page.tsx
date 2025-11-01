@@ -138,35 +138,35 @@ export default function DistrictPage({
       <GovernmentHeader />
 
       <section className="border-b border-blue-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
-            <Link href={`/${locale}`} className="inline-flex items-center gap-2 text-blue-700 hover:text-orange-500">
-              <span className="text-xl">←</span>
-              <span className="text-sm font-semibold uppercase tracking-wide">{t("common.back")}</span>
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:gap-4 px-3 sm:px-6 py-4 sm:py-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center md:gap-6">
+            <Link href={`/${locale}`} className="inline-flex items-center gap-1.5 sm:gap-2 text-blue-700 hover:text-orange-500">
+              <span className="text-lg sm:text-xl">←</span>
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">{t("common.back")}</span>
             </Link>
             <div className="md:border-l md:border-blue-100 md:pl-6">
-              <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{t("district.title")}</p>
-              <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">{readableDistrict}</h1>
-              <p className="text-sm font-medium text-gray-600">
+              <p className="text-[10px] xs:text-xs font-semibold uppercase tracking-wide text-blue-700">{t("district.title")}</p>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 break-words">{readableDistrict}</h1>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {t("district.fin_year")}: {currentFinYear}
               </p>
             </div>
           </div>
           {data && (
-            <div className="flex flex-wrap items-center gap-3 text-sm text-blue-700">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-blue-700">
               <button
                 onClick={handleVoiceSummary}
-                className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-4 py-2 font-semibold text-blue-700 transition-colors hover:bg-blue-50"
+                className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-blue-200 px-3 sm:px-4 py-1.5 sm:py-2 font-semibold text-blue-700 transition-colors hover:bg-blue-50"
                 aria-label={isSpeaking ? t("district.stopVoice") : t("district.playVoice")}
               >
-                {isSpeaking ? "⏹️" : "🔊"} {isSpeaking ? t("district.stopVoice") : t("district.playVoice")}
+                {isSpeaking ? "⏹️" : "🔊"} <span className="hidden xs:inline">{isSpeaking ? t("district.stopVoice") : t("district.playVoice")}</span>
               </button>
             </div>
           )}
         </div>
       </section>
 
-      <main className="mx-auto max-w-7xl px-4 py-10">
+      <main className="mx-auto max-w-7xl px-3 sm:px-4 py-6 sm:py-10">
         {error && !loading ? (
           <div className="mx-auto max-w-2xl rounded-2xl border border-red-200 bg-red-50 p-10 text-center">
             <div className="text-4xl">❌</div>
@@ -197,7 +197,7 @@ export default function DistrictPage({
 
             {data && (
               <>
-                <div className="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mb-8 sm:mb-10 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   <SummaryCard
                     title={t("district.statistics.averageWage")}
                     value={`₹${data.summary.averageWageRate.toFixed(2)}`}
@@ -239,9 +239,9 @@ export default function DistrictPage({
                   />
                 </div>
 
-                <div className="mb-10 rounded-2xl bg-white p-8 shadow-md">
-                  <h3 className="mb-4 text-xl font-semibold text-gray-900">{t("district.plainLanguage")}</h3>
-                  <p className="text-lg leading-relaxed text-gray-700">
+                <div className="mb-8 sm:mb-10 rounded-xl sm:rounded-2xl bg-white p-4 sm:p-6 md:p-8 shadow-md">
+                  <h3 className="mb-3 sm:mb-4 text-lg sm:text-xl font-semibold text-gray-900">{t("district.plainLanguage")}</h3>
+                  <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-700">
                     {t("district.plainLanguageTextFull", {
                       district: data.district,
                       year: data.fin_year,
@@ -255,15 +255,15 @@ export default function DistrictPage({
                 </div>
 
                 {chartData.length > 0 && (
-                  <div className="mb-10 rounded-2xl bg-white p-8 shadow-md">
-                    <h3 className="mb-4 text-xl font-semibold text-gray-900">{t("district.charts")}</h3>
-                    <ResponsiveContainer width="100%" height={400}>
-                      <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+                  <div className="mb-8 sm:mb-10 rounded-xl sm:rounded-2xl bg-white p-4 sm:p-6 md:p-8 shadow-md">
+                    <h3 className="mb-3 sm:mb-4 text-lg sm:text-xl font-semibold text-gray-900">{t("district.charts")}</h3>
+                    <ResponsiveContainer width="100%" height={300} className="sm:h-[350px] md:h-[400px]">
+                      <BarChart data={chartData} margin={{ top: 20, right: 10, left: 0, bottom: 60 }}>
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" angle={-45} textAnchor="end" height={100} tick={{ fontSize: 12 }} />
-                        <YAxis />
+                        <XAxis dataKey="month" angle={-45} textAnchor="end" height={80} tick={{ fontSize: 10 }} />
+                        <YAxis tick={{ fontSize: 10 }} />
                         <Tooltip />
-                        <Legend />
+                        <Legend wrapperStyle={{ fontSize: '12px' }} />
                         <Bar dataKey="wage" fill="#3b82f6" name="Wage Rate (₹)" />
                         <Bar dataKey="expenditure" fill="#10b981" name="Expenditure (₹ Cr)" />
                       </BarChart>

@@ -10,6 +10,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'upload.wikimedia.org',
             },
+            {
+                protocol: 'https',
+                hostname: 'm9d2qsz3ow.ufs.sh',
+            },
         ],
     },
 };

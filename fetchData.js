@@ -1,10 +1,21 @@
-import axios from "axios";
 import { PrismaClient } from "@prisma/client";
+import axios from "axios";
+import dotenv from "dotenv";
+
+// Load environment variables from a .env file if present.
+// Make sure to run: npm install dotenv --save
+dotenv.config();
 
 const prisma = new PrismaClient();
 
 const API_URL = "https://api.data.gov.in/resource/ee03643a-ee4c-48c2-ac30-9f2ff26ab722";
-const API_KEY = "579b464db66ec23bdd00000183bd96d3595846ea54eab202935b1133";
+const API_KEY = process.env.DATA_GOV_API_KEY;
+
+// Fail fast if API key is not provided.
+if (!API_KEY) {
+  console.error("\nERROR: DATA_GOV_API_KEY is not set.\n\nPlease add your API key to your environment before running this script.\nOptions:\n  1) Create a `.env` file in the project root with: DATA_GOV_API_KEY=your_api_key\n  2) Export the variable in your shell: export DATA_GOV_API_KEY=your_api_key\n  3) Pass it inline when running: DATA_GOV_API_KEY=your_api_key node fetchData.js\n\nAfter that, re-run the script.\n");
+  process.exit(1);
+}
 
 const FIN_YEARS = [
   "2018-2019",

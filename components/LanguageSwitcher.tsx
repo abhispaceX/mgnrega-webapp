@@ -1,18 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
 import { useTranslation } from "react-i18next";
-import { useRouter, usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
+  const [isChanging, setIsChanging] = useState(false);
 
   useEffect(() => {
     // Extract locale from pathname
     const pathLocale = pathname.split("/")[1];
-    if (["en", "hi", "te"].includes(pathLocale)) {
+    if (["en", "hi", "te"].includes(pathLocale) && i18n.language !== pathLocale) {
       i18n.changeLanguage(pathLocale);
     }
   }, [pathname, i18n]);
@@ -23,10 +25,18 @@ export default function LanguageSwitcher() {
     { code: "te", label: "తెలుగు", flag: "🇮🇳" },
   ];
 
-  const switchLanguage = (newLocale: string) => {
-    i18n.changeLanguage(newLocale);
-    const newPath = pathname.replace(/^\/(en|hi|te)/, `/${newLocale}`);
-    router.push(newPath);
+  const switchLanguage = async (newLocale: string) => {
+    if (isChanging || i18n.language === newLocale) return;
+    
+    setIsChanging(true);
+    
+    // Change i18n language - this will trigger re-renders in all components using useTranslation
+    await i18n.changeLanguage(newLocale);
+    
+    setIsChanging(false);
+    
+    // Don't navigate - just update the language in-place
+    // The URL locale is just for initial load, not for switching
   };
 
   return (

@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(req: Request) {
   try {
@@ -64,9 +64,32 @@ export async function GET(req: Request) {
 
       const existing = districtLatestData.get(districtName);
       if (!existing || monthRank > monthOrder[existing.month || ""] || 0) {
-        const totalPersondays =
-          (record.Total_Individuals_Worked || 0) *
-          (record.Average_days_of_employment_provided_per_Household || 0);
+        // Calculate persondays more accurately:
+        // Option 1: Use the sum of category-wise persondays if available
+        // Option 2: Use Total_Individuals × Average_days (but per individual, not per household)
+        // For now, we'll use a reasonable estimation based on individuals and average days
+        const scPersondays = record.SC_persondays || 0;
+        const stPersondays = record.ST_persondays || 0;
+        const womenPersondays = record.Women_Persondays || 0;
+        
+        // Total persondays should be close to: Total Individuals × Average Days per Person
+        // But Average_days_of_employment_provided_per_Household is per HOUSEHOLD, not per person
+        // So we need a different approach. Let's use the maximum of the category persondays as a proxy
+        const totalPersondays = (() => {
+          const reported = record.Persondays_of_Central_Liability_so_far || 0;
+          if (reported > 0) {
+            return reported;
+          }
+
+          const categorySum = scPersondays + stPersondays + womenPersondays;
+          if (categorySum > 0) {
+            return categorySum;
+          }
+
+          const totalIndividuals = record.Total_Individuals_Worked || 0;
+          const avgDaysPerHousehold = record.Average_days_of_employment_provided_per_Household || 0;
+          return totalIndividuals * avgDaysPerHousehold;
+        })();
 
         districtLatestData.set(districtName, {
           totalHouseholds: record.Total_Households_Worked || 0,
