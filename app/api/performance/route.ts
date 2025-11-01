@@ -58,7 +58,7 @@ export async function GET(req: Request) {
     };
 
     // Process data to get latest month's cumulative values per district
-    data.forEach((record) => {
+    data.forEach((record: typeof data[0]) => {
       const districtName = record.district.name;
       const monthRank = monthOrder[record.month] || 0;
 
@@ -148,7 +148,7 @@ export async function GET(req: Request) {
     // Calculate weighted average wage rate
     const avgWage =
       aggregated.wageRates.length > 0
-        ? aggregated.wageRates.reduce((a, b) => a + b, 0) / aggregated.wageRates.length
+        ? aggregated.wageRates.reduce((a: number, b: number) => a + b, 0) / aggregated.wageRates.length
         : 0;
 
     // Calculate women participation percentage
@@ -176,7 +176,7 @@ export async function GET(req: Request) {
       return acc;
     }, new Map<string, { activeWorkers: number; persondays: number; assetsCompleted: number; totalExpenditure: number }>());
 
-    const stateSummaries = Array.from(stateAggregates.entries()).map(([state, values]) => ({
+    const stateSummaries = Array.from(stateAggregates.entries()).map(([state, values]: [string, { activeWorkers: number; persondays: number; assetsCompleted: number; totalExpenditure: number }]) => ({
       state,
       ...values,
     }));
