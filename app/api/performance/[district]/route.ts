@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(
   req: Request,
@@ -57,7 +57,7 @@ export async function GET(
     let latestRecord = records[0];
     let maxMonthRank = monthOrder[records[0]?.month || ""] || 0;
 
-    records.forEach((record) => {
+    records.forEach((record: typeof records[0]) => {
       const monthRank = monthOrder[record.month] || 0;
       if (monthRank > maxMonthRank) {
         maxMonthRank = monthRank;
