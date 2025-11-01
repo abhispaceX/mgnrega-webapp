@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
@@ -21,7 +21,7 @@ export async function GET() {
 
     return NextResponse.json({
       districts,
-      availableYears: availableYears.map((y) => y.fin_year),
+      availableYears: availableYears.map((y:any) => y.fin_year),
     });
   } catch (error) {
     console.error("Error fetching districts:", error);
