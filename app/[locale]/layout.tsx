@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import "@/i18n";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,16 +12,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "MGNREGA Dashboard - Andhra Pradesh",
-  description: "MGNREGA performance dashboard for Andhra Pradesh districts",
-};
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "hi" }, { locale: "te" }];
+}
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
   return (
     <html>
       <body
@@ -32,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

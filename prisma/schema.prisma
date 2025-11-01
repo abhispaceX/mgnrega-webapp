@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PG_DATABASE_URL")
+}
+
+
+model District {
+  id           Int                  @id @default(autoincrement())
+  name         String               @unique
+  state_name   String
+  performances MgnregaPerformance[]
+}
+
+
+model MgnregaPerformance {
+  id                                        Int      @id @default(autoincrement())
+  districtId                                Int
+  district                                  District @relation(fields: [districtId], references: [id])
+
+  fin_year                                  String
+  month                                     String
+
+  Approved_Labour_Budget                    Float?
+  Average_Wage_rate_per_day_per_person      Float?
+  Average_days_of_employment_provided_per_Household Float?
+  Differently_abled_persons_worked          Int?
+  Material_and_skilled_Wages                Float?
+  Number_of_Completed_Works                 Int?
+  Number_of_GPs_with_NIL_exp                Int?
+  Number_of_Ongoing_Works                   Int?
+  Persondays_of_Central_Liability_so_far    Float?
+  SC_persondays                             Float?
+  ST_persondays                             Float?
+  Total_Exp                                 Float?
+  Total_Households_Worked                   Int?
+  Total_Individuals_Worked                  Int?
+  Wages                                     Float?
+  Women_Persondays                          Float?
+  Remarks                                   String?
+
+  last_updated                              DateTime @updatedAt
+
+  @@unique([districtId, fin_year, month], name: "districtId_fin_year_month")
+}

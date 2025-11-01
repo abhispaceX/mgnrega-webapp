@@ -1,0 +1,43 @@
+{
+  "common": {
+    "title": "మహత్వగృహ రాజ్య కామ కార్యక్రమం",
+    "andhraPradesh": "ఆంధ్ర ప్రదేశ్",
+    "selectYear": "సంవత్సరం ఎంచుకోండి",
+    "selectLanguage": "భాష",
+    "loading": "సమాచారం లోడ్ అవుతోంది...",
+    "error": "సమాచారం పొందలేము",
+    "viewDetails": "వివరాలను చూడండి",
+    "back": "వెనుకకు"
+  },
+  "home": {
+    "dashboardTitle": "మహత్వగృహ రాజ్య కామ కార్యక్రమం",
+    "summaryCards": {
+      "totalHouseholds": "కుటుంబాలు పని చేశాయి",
+      "averageWage": "రోజువారీ చెల్లింపు",
+      "womenParticipation": "మహిళలు పని చేస్తున్నారు",
+      "totalExpenditure": "మొత్తం చెల్లింపు"
+    },
+    "chartTitle": "ప్రాంతం ద్వారా పని చెల్లింపు",
+    "noData": "ఈ సంవత్సరానికి సమాచారం లేదు"
+  },
+  "district": {
+    "title": "జిల్లా సమాచారం",
+    "fin_year": "సంవత్సరం",
+    "keyStats": "ప్రధాన సంఖ్యలు",
+    "plainLanguage": "సాధారణ సమాచారం",
+    "charts": "చార్ట్లు",
+    "voiceSummary": "సమాచారాన్ని విన్నుకోండి",
+    "playVoice": "విన్నుకోండి",
+    "stopVoice": "ఆపండి",
+    "statistics": {
+      "averageWage": "రోజువారీ రేటు",
+      "totalHouseholds": "పని చేసిన కుటుంబాలు",
+      "totalExpenditure": "మొత్తం చెల్లింపు",
+      "completedWorks": "పూర్తి చేసిన కార్యాలు",
+      "ongoingWorks": "ప్రస్తుతం జరుగుతున్న కార్యాలు",
+      "wagesPaid": "చెల్లించిన తరహా"
+    },
+    "plainLanguageText": "{district} లో, కార్మికులకు రోజువారీ ₹{wage} ఇవ్వబడుతుంది। {households} కుటుంబాలు ఇక్కడ పని చేశాయి। మొత్తం చెల్లింపు ₹{expenditure}.",
+    "plainLanguageTextFull": "{year} సమయంలో {district} లో, {households} కుటుంబాలు పని కార్యక్రమంలో పనిచేశాయి। ప్రతి కార్మికుడికి రోజువారీ ₹{wage} ఇవ్వబడింది। మొత్తం చెల్లింపు ₹{expenditure} ఉంది। {completedWorks} కార్యాలు పూర్తి చేయబడ్డాయి మరియు {ongoingWorks} కార్యాలు ఇంకా జరుగుతున్నాయి।"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "common": {
+    "title": "Mahatma Gandhi National Rural Employment Guarantee Scheme",
+    "andhraPradesh": "Andhra Pradesh",
+    "selectYear": "Select Year",
+    "selectLanguage": "Language",
+    "loading": "Loading information...",
+    "error": "Could not load information",
+    "viewDetails": "View Details",
+    "back": "Go Back"
+  },
+  "home": {
+    "dashboardTitle": "Mahatma Gandhi National Rural Employment Guarantee Scheme",
+    "summaryCards": {
+      "totalHouseholds": "Families Worked",
+      "averageWage": "Daily Payment",
+      "womenParticipation": "Women Working",
+      "totalExpenditure": "Total Paid"
+    },
+    "chartTitle": "Work Payment by Area",
+    "noData": "No information available for this year"
+  },
+  "district": {
+    "title": "District Information",
+    "fin_year": "Year",
+    "keyStats": "Main Numbers",
+    "plainLanguage": "Simple Information",
+    "charts": "Charts",
+    "voiceSummary": "Listen to Information",
+    "playVoice": "Listen",
+    "stopVoice": "Stop",
+    "statistics": {
+      "averageWage": "Daily Payment Rate",
+      "totalHouseholds": "Families Who Worked",
+      "totalExpenditure": "Total Money Paid",
+      "completedWorks": "Completed Jobs",
+      "ongoingWorks": "Current Jobs",
+      "wagesPaid": "Money Paid"
+    },
+    "plainLanguageText": "In {district}, workers get ₹{wage} per day. {households} families have worked here. Total money paid is ₹{expenditure}.",
+    "plainLanguageTextFull": "In {district} during {year}, {households} families worked in the job program. Each worker got ₹{wage} per day. Total money paid was ₹{expenditure}. {completedWorks} jobs were finished and {ongoingWorks} jobs are still happening."
+  }
+}

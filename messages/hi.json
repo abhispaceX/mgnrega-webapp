@@ -1,0 +1,43 @@
+{
+  "common": {
+    "title": "महत्वगृह राज्य के राज्य काम कार्यक्रम",
+    "andhraPradesh": "आंध्र प्रदेश",
+    "selectYear": "साल चुनें",
+    "selectLanguage": "भाषा",
+    "loading": "जानकारी लोड हो रही है...",
+    "error": "जानकारी नहीं मिल सकी",
+    "viewDetails": "विवरण देखें",
+    "back": "वापस जाएं"
+  },
+  "home": {
+    "dashboardTitle": "महत्वगृह राज्य के राज्य काम कार्यक्रम",
+    "summaryCards": {
+      "totalHouseholds": "काम करने वाले परिवार",
+      "averageWage": "रोज का भुगतान",
+      "womenParticipation": "महिलाएं काम कर रही हैं",
+      "totalExpenditure": "कुल भुगतान"
+    },
+    "chartTitle": "क्षेत्र के अनुसार काम का भुगतान",
+    "noData": "इस साल के लिए कोई जानकारी नहीं है"
+  },
+  "district": {
+    "title": "जिले की जानकारी",
+    "fin_year": "साल",
+    "keyStats": "मुख्य संख्याएं",
+    "plainLanguage": "सरल जानकारी",
+    "charts": "चार्ट",
+    "voiceSummary": "जानकारी सुनें",
+    "playVoice": "सुनें",
+    "stopVoice": "रोकें",
+    "statistics": {
+      "averageWage": "रोज की दर",
+      "totalHouseholds": "काम करने वाले परिवार",
+      "totalExpenditure": "कुल भुगतान",
+      "completedWorks": "पूरे किए गए काम",
+      "ongoingWorks": "चल रहे काम",
+      "wagesPaid": "भुगतान की गई राशि"
+    },
+    "plainLanguageText": "{district} में, कर्मचारियों को रोज ₹{wage} मिलते हैं। {households} परिवारों ने यहां काम किया। कुल भुगतान ₹{expenditure} है।",
+    "plainLanguageTextFull": "{year} के दौरान {district} में, {households} परिवारों ने काम कार्यक्रम में काम किया। हर कर्मचारी को रोज ₹{wage} मिले। कुल भुगतान ₹{expenditure} था। {completedWorks} काम पूरे हुए और {ongoingWorks} काम अभी चल रहे हैं।"
+  }
+}
